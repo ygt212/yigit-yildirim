@@ -107,7 +107,7 @@ export function Header() {
         <Link 
           href="#home" 
           onClick={() => setIsMobileMenuOpen(false)}
-          className="text-xl md:text-2xl font-medium hover:text-[#60A5FA] transition-colors duration-300 outline-none"
+          className="text-xl md:text-2xl font-medium hover:text-[#60A5FA] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
         >
           Yiğit Yıldırım
         </Link>
@@ -120,7 +120,7 @@ export function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`${isActive ? "text-[#60A5FA] font-medium" : "text-primary-foreground/90 font-light"} hover:text-[#60A5FA] transition-colors duration-300 text-sm md:text-[15px] tracking-wide outline-none`}
+                className={`${isActive ? "text-[#60A5FA] font-medium" : "text-primary-foreground/90 font-light"} hover:text-[#60A5FA] transition-colors duration-300 text-sm md:text-[15px] tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm`}
               >
                 {link.name}
               </Link>
@@ -131,7 +131,7 @@ export function Header() {
         {/* Mobil Menü Butonu */}
         <button
           ref={buttonRef}
-          className="md:hidden text-primary-foreground hover:text-[#60A5FA] transition-colors duration-300 outline-none p-1"
+          className="md:hidden text-primary-foreground hover:text-[#60A5FA] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md p-1"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Menüyü kapat" : "Menüyü aç"}
           aria-expanded={isMobileMenuOpen}
@@ -153,7 +153,7 @@ export function Header() {
                   ref={index === 0 ? firstLinkRef : null}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-6 py-4 ${isActive ? "text-[#60A5FA] font-medium" : "text-primary-foreground font-light"} hover:bg-primary-foreground/5 hover:text-[#60A5FA] transition-colors duration-300 motion-reduce:transition-none outline-none`}
+                  className={`block px-6 py-4 ${isActive ? "text-[#60A5FA] font-medium" : "text-primary-foreground font-light"} hover:bg-primary-foreground/5 hover:text-[#60A5FA] transition-colors duration-300 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
                 >
                   {link.name}
                 </Link>

@@ -52,7 +52,9 @@ export async function getSiteData() {
       }
     };
   } catch (error) {
-    console.error('Sanity Fetch Error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Sanity Fetch Error:', error);
+    }
     return fallbackData;
   }
 }

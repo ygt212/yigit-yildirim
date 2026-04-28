@@ -3,7 +3,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import type { SiteData } from "@/lib/data";
-import Image from "next/image";
 
 export function Hero({ data }: { data: SiteData["hero"] }) {
   const shouldReduceMotion = useReducedMotion();
@@ -37,11 +36,6 @@ export function Hero({ data }: { data: SiteData["hero"] }) {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="space-y-4">
-            {data.imageUrl && (
-              <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/10 shadow-lg">
-                <Image src={data.imageUrl} alt={data.name} fill className="object-cover" sizes="(max-width: 768px) 128px, 160px" priority />
-              </div>
-            )}
             <p className="text-xl md:text-2xl font-medium text-foreground/80">
               {data.title}
             </p>
@@ -60,13 +54,13 @@ export function Hero({ data }: { data: SiteData["hero"] }) {
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 pt-6">
             <a 
               href={data.buttons.primary.link}
-              className="px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all shadow-md hover:shadow-lg motion-reduce:transition-none"
+              className="px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent motion-reduce:transition-none"
             >
               {data.buttons.primary.text}
             </a>
             <a 
               href={data.buttons.secondary.link}
-              className="px-8 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary/5 transition-all motion-reduce:transition-none"
+              className="px-8 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent motion-reduce:transition-none"
             >
               {data.buttons.secondary.text}
             </a>
@@ -84,7 +78,7 @@ export function Hero({ data }: { data: SiteData["hero"] }) {
       >
         <a 
           href="#projects"
-          className="flex flex-col items-center text-primary/60 hover:text-primary transition-colors group motion-reduce:transition-none"
+          className="flex flex-col items-center text-primary/60 hover:text-primary transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg p-2 motion-reduce:transition-none"
           aria-label="Projeler bölümüne kaydır"
         >
           <span className="text-sm font-medium tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-all -mb-4 group-hover:mb-1 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:mb-1">

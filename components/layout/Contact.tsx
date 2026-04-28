@@ -61,7 +61,7 @@ export function Contact({ data }: { data: SiteData["contact"] }) {
                 onClick={(e) => handleSocialClick(e, social.url || "", index)}
                 target={social.url?.startsWith("mailto:") ? "_self" : "_blank"}
                 rel="noopener noreferrer"
-                className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-background border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-background border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 aria-label={social.name}
               >
                 {iconMap[social.icon] || <Mail size={24} />}
@@ -70,6 +70,7 @@ export function Contact({ data }: { data: SiteData["contact"] }) {
                 <motion.span
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
+                  aria-live="polite"
                   className="absolute -bottom-10 whitespace-nowrap text-xs font-medium text-accent bg-accent/10 px-3 py-1.5 rounded-md"
                 >
                   Kopyalandı! ✓

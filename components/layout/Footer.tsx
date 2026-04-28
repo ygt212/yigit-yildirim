@@ -27,7 +27,7 @@ export function Footer({ data }: { data: SiteData["contact"] }) {
             <a 
               key={social.name}
               href={social.url || "#"}
-              target="_blank"
+              target={(social.url?.startsWith("mailto:") || social.url?.startsWith("tel:")) ? "_self" : "_blank"}
               rel="noopener noreferrer"
               aria-label={social.name}
               className="text-primary-foreground/70 hover:text-[#60A5FA] transition-colors focus:outline-none focus:ring-2 focus:ring-[#60A5FA] rounded-sm p-1"

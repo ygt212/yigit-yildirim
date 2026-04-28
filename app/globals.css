@@ -6,6 +6,8 @@
   --color-background: #f3f4f6;
   --color-foreground: #1f2937;
   --color-accent: #2563eb; /* WCAG AA uyumluluğu için koyulaştırıldı (#3b82f6 -> #2563eb) */
+  --color-muted: #e5e7eb;
+  --color-muted-foreground: #6b7280;
 
   /* Next.js üzerinden gelen Montserrat font değişkenini Tailwind ile eşleştir */
   --font-sans: var(--font-sans);

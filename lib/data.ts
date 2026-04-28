@@ -4,7 +4,6 @@ export interface SiteData {
     name: string;
     subtitle: string;
     description: string;
-    imageUrl?: string;
     buttons: {
       primary: { text: string; link: string };
       secondary: { text: string; link: string };
@@ -19,7 +18,6 @@ export interface SiteData {
     id: number;
     title: string;
     description: string;
-    imageUrl?: string;
     tech: string[];
     link: string;
   }>;

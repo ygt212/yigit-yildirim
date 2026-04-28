@@ -1,24 +1,21 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const basicAuth = req.headers.get('authorization');
-  const url = req.nextUrl;
 
-  if (url.pathname.startsWith('/admin')) {
+  if (req.nextUrl.pathname.startsWith('/admin')) {
     if (basicAuth) {
       const authValue = basicAuth.split(' ')[1];
-      const [user, pwd] = atob(authValue).split(':');
+      // atob can be problematic in some server environments, Buffer is robust
+      const [user, pwd] = Buffer.from(authValue, 'base64').toString().split(':');
 
-      const validUser = process.env.ADMIN_USER;
-      const validPass = process.env.ADMIN_PASS;
-
-      if (user === validUser && pwd === validPass) {
+      if (user === process.env.ADMIN_USER && pwd === process.env.ADMIN_PASS) {
         return NextResponse.next();
       }
     }
 
-    return new NextResponse('Auth required', {
+    return new NextResponse('Authentication Required', {
       status: 401,
       headers: {
         'WWW-Authenticate': 'Basic realm="Secure Area"',
@@ -30,5 +27,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: '/admin/:path*',
 };

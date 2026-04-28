@@ -1,4 +1,4 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import { type SchemaTypeDefinition, type Rule } from 'sanity'
 
 export const hero = {
   name: 'hero',
@@ -8,8 +8,7 @@ export const hero = {
     { name: 'title', title: 'Başlık (Merhaba, Ben)', type: 'string' },
     { name: 'name', title: 'İsim', type: 'string' },
     { name: 'subtitle', title: 'Alt Başlık (Ünvan)', type: 'string' },
-    { name: 'description', title: 'Açıklama', type: 'text' },
-    { name: 'image', title: 'Profil Resmi', type: 'image', options: { hotspot: true } }
+    { name: 'description', title: 'Açıklama', type: 'text' }
   ]
 }
 
@@ -31,7 +30,6 @@ export const project = {
   fields: [
     { name: 'title', title: 'Proje Adı', type: 'string' },
     { name: 'description', title: 'Açıklama', type: 'text' },
-    { name: 'image', title: 'Görsel', type: 'image', options: { hotspot: true } },
     { name: 'tech', title: 'Teknolojiler', type: 'array', of: [{ type: 'string' }] },
     { name: 'link', title: 'Proje Linki', type: 'url' }
   ]
@@ -43,7 +41,7 @@ export const social = {
   type: 'document',
   fields: [
     { name: 'name', title: 'Platform Adı', type: 'string' },
-    { name: 'url', title: 'URL', type: 'url', validation: (Rule) => Rule.uri({ scheme: ['http', 'https', 'mailto', 'tel'] }) },
+    { name: 'url', title: 'URL', type: 'url', validation: (Rule: Rule) => Rule.uri({ scheme: ['http', 'https', 'mailto', 'tel'] }) },
     { name: 'icon', title: 'İkon Adı (Github, Linkedin, Twitter, Mail vs.)', type: 'string' }
   ]
 }
