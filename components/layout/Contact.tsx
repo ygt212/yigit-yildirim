@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { SiteData } from "@/lib/data";
 import { Mail } from "lucide-react";
@@ -18,6 +19,18 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function Contact({ data }: { data: SiteData["contact"] }) {
   const shouldReduceMotion = useReducedMotion();
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
+  const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string, index: number) => {
+    if (url.startsWith('mailto:')) {
+      e.preventDefault();
+      const email = url.replace('mailto:', '');
+      navigator.clipboard.writeText(email).then(() => {
+        setCopiedIndex(index);
+        setTimeout(() => setCopiedIndex(null), 2000);
+      });
+    }
+  };
 
   return (
     <div className="w-full max-w-3xl mx-auto px-6 py-32 flex flex-col items-center text-center">
@@ -41,16 +54,27 @@ export function Contact({ data }: { data: SiteData["contact"] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: shouldReduceMotion ? 0.1 : 0.5, delay: shouldReduceMotion ? 0 : index * 0.1 }}
+              className="relative flex flex-col items-center"
             >
               <Link
                 href={social.url || "#"}
-                target="_blank"
+                onClick={(e) => handleSocialClick(e, social.url || "", index)}
+                target={social.url?.startsWith("mailto:") ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-background border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:transform-none"
                 aria-label={social.name}
               >
                 {iconMap[social.icon] || <Mail size={24} />}
               </Link>
+              {copiedIndex === index && (
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute -bottom-10 whitespace-nowrap text-xs font-medium text-accent bg-accent/10 px-3 py-1.5 rounded-md"
+                >
+                  Kopyalandı! ✓
+                </motion.span>
+              )}
             </motion.div>
           ))}
         </div>

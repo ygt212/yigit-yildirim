@@ -43,7 +43,7 @@ export const social = {
   type: 'document',
   fields: [
     { name: 'name', title: 'Platform Adı', type: 'string' },
-    { name: 'url', title: 'URL', type: 'url' },
+    { name: 'url', title: 'URL', type: 'url', validation: (Rule) => Rule.uri({ scheme: ['http', 'https', 'mailto', 'tel'] }) },
     { name: 'icon', title: 'İkon Adı (Github, Linkedin, Twitter, Mail vs.)', type: 'string' }
   ]
 }

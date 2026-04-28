@@ -14,10 +14,10 @@ export async function getSiteData() {
   try {
     // GROQ sorguları ile Sanity'den tüm içerikleri çekiyoruz
     const [hero, about, projects, socials] = await Promise.all([
-      client.fetch(`*[_type == "hero"][0]`),
-      client.fetch(`*[_type == "about"][0]`),
-      client.fetch(`*[_type == "project"] | order(_createdAt asc)`),
-      client.fetch(`*[_type == "social"]`)
+      client.fetch(`*[_type == "hero"][0]`, {}, { cache: 'no-store' }),
+      client.fetch(`*[_type == "about"][0]`, {}, { cache: 'no-store' }),
+      client.fetch(`*[_type == "project"] | order(_createdAt asc)`, {}, { cache: 'no-store' }),
+      client.fetch(`*[_type == "social"]`, {}, { cache: 'no-store' })
     ]);
 
     // Eğer Sanity henüz boşsa veya yapılandırılmadıysa, statik (fallback) verileri kullan

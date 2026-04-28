@@ -25,6 +25,7 @@ export function Header() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
+            window.history.replaceState(null, '', `#${entry.target.id}`);
           }
         });
       },
