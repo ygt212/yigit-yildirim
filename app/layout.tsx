@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     title: "Yiğit Yıldırım | Portfolio",
     description: "Modern web çözümleri geliştiren Full Stack Geliştirici",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
