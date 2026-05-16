@@ -19,6 +19,7 @@ export const about = {
   fields: [
     { name: 'title', title: 'Bölüm Başlığı', type: 'string' },
     { name: 'description', title: 'Biyografi', type: 'text' },
+    { name: 'fullBio', title: 'Detaylı Biyografi (Uzun Metin)', type: 'text' },
     { name: 'skills', title: 'Yetenekler', type: 'array', of: [{ type: 'string' }] }
   ]
 }

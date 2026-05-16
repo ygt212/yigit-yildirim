@@ -37,6 +37,7 @@ export async function getSiteData() {
       about: {
         title: about?.title || fallbackData.about.title,
         description: about?.description || fallbackData.about.description,
+        fullBio: about?.fullBio || fallbackData.about.fullBio,
         skills: about?.skills || fallbackData.about.skills
       },
       projects: projects?.length > 0 ? projects.map((p: SanityProject, index: number) => ({

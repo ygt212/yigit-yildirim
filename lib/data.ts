@@ -12,6 +12,7 @@ export interface SiteData {
   about: {
     title: string;
     description: string;
+    fullBio?: string;
     skills: string[];
   };
   projects: Array<{
@@ -47,6 +48,7 @@ export const siteData: SiteData = {
   about: {
     title: "Hakkımda",
     description: "Yazılım dünyasına adım attığım günden beri estetik ve işlevselliği birleştiren projeler geliştirmeye tutkuyla bağlıyım. Temiz kod (clean code) prensiplerine sadık kalıp, güncel tasarım trendlerini takip ederek kullanıcıların severek kullanacağı sürdürülebilir mimariler kuruyorum. Problem çözmeyi bir sanat olarak görüyorum.",
+    fullBio: "Kodlamaya ilk başladığım yıllardan itibaren, sadece çalışan değil, aynı zamanda kullanıcıyı anlayan, temiz, sürdürülebilir mimariler tasarlamak her zaman bir tutku oldu benim için. Detayların bütünü kusursuzlaştırdığına inanıyorum ve her projemde performans, estetik, kullanıcı deneyimi üçgenini titizlikle kurgulamaya gayret ediyorum. Modern teknolojiler ile yenilikçi vizyonumu harmanlayarak, dijital dünyada gerçekten iz bırakacak ürünler geliştirmeye devam edeceğim.",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Framer Motion", "Figma", "Git"]
   },
   projects: [

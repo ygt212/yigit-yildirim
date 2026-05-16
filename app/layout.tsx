@@ -3,17 +3,17 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin', 'latin-ext'],
   variable: '--font-sans',
-  weight: ['300', '400', '500', '600', '700'] 
+  weight: ['300', '400', '500', '600', '700']
 });
 
 export const metadata: Metadata = {
-  title: "Yiğit Yıldırım | Portfolio",
+  title: "Yiğit Yıldırım | Portföy",
   description: "Modern web çözümleri geliştiren Full Stack Geliştirici",
   openGraph: {
-    title: "Yiğit Yıldırım | Portfolio",
+    title: "Yiğit Yıldırım | Portföy",
     description: "Modern web çözümleri geliştiren Full Stack Geliştirici",
     url: "https://ygtyildirm.com",
     siteName: "Yiğit Yıldırım",
@@ -22,11 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yiğit Yıldırım | Portfolio",
+    title: "Yiğit Yıldırım | Portföy",
     description: "Modern web çözümleri geliştiren Full Stack Geliştirici",
-  },
-  icons: {
-    icon: "/favicon.ico",
   },
 };
 

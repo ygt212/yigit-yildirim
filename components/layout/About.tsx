@@ -1,6 +1,8 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import type { SiteData } from "@/lib/data";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 export function About({ data }: { data: SiteData["about"] }) {
   const shouldReduceMotion = useReducedMotion();
@@ -14,9 +16,25 @@ export function About({ data }: { data: SiteData["about"] }) {
         transition={{ duration: shouldReduceMotion ? 0.1 : 0.7, ease: "easeOut" }}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">{data.title}</h2>
-        <p className="text-lg font-light text-foreground/80 leading-relaxed mb-12 max-w-3xl mx-auto tracking-wide">
-          {data.description}
-        </p>
+        <div className="text-lg font-light text-foreground/80 leading-relaxed mb-8 max-w-3xl mx-auto tracking-wide text-left md:text-center">
+          <ReactMarkdown
+            components={{
+              p: ({ node, ...props }) => <p className="mb-4 last:mb-0" {...props} />,
+              strong: ({ node, ...props }) => <strong className="font-semibold text-accent" {...props} />,
+            }}
+          >
+            {data.description}
+          </ReactMarkdown>
+        </div>
+
+        <div className="flex justify-center mb-12">
+          <Link 
+            href="/biography" 
+            className="inline-block px-6 py-2 border border-foreground/20 rounded-full font-sans text-sm tracking-wide text-foreground hover:bg-foreground/5 hover:border-foreground/40 transition-all duration-300"
+          >
+            Hikayemi Oku
+          </Link>
+        </div>
         
         <div className="flex flex-wrap justify-center gap-3">
           {data.skills.map((skill, index) => (
