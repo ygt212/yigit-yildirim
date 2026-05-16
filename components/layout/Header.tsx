@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
   
   const menuRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -20,23 +22,25 @@ export function Header() {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-            window.history.replaceState(null, '', `#${entry.target.id}`);
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -80% 0px" }
-    );
+    if (pathname === '/') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+              window.history.replaceState(null, '', `#${entry.target.id}`);
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -80% 0px" }
+      );
 
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, []);
+      return () => observer.disconnect();
+    }
+  }, [pathname]);
 
   // Odak yönetimi (Focus Management) ve tıkla-kapat
   const isFirstRender = useRef(true);
